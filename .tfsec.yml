@@ -1,0 +1,46 @@
+# =============================================================================
+# TFSEC CONFIGURATION - SECURITY SCANNING
+# =============================================================================
+
+# Configuração do tfsec para security scanning do Terraform
+
+# Severidades a serem verificadas
+severity:
+  - ERROR
+  - WARNING
+  - INFO
+
+# Excluir verificações específicas (se necessário)
+exclude:
+  # Exemplo: desabilitar check específico
+  # - aws-s3-enable-bucket-encryption
+
+# Configurações específicas para Oracle Cloud
+oracle:
+  # Verificar configurações de rede
+  network:
+    check_security_groups: true
+    check_open_ports: true
+
+  # Verificar configurações de compute
+  compute:
+    check_ssh_keys: true
+    check_metadata: true
+
+  # Verificar configurações de storage
+  storage:
+    check_encryption: true
+    check_public_access: true
+
+# Formato de saída
+format: default
+
+# Incluir checks customizados
+include_passed: false
+include_ignored: false
+
+# Configurações de output
+output:
+  json: false
+  junit: false
+  csv: false
